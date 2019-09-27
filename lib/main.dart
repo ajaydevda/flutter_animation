@@ -21,8 +21,10 @@ class MyApp extends StatelessWidget {
 
         theme: new ThemeData(
           brightness: Brightness.dark,
-          textTheme: TextTheme(body1: TextStyle(fontStyle: FontStyle.normal,fontSize: 16.0,color: Colors.greenAccent),
-            body2: TextStyle(fontStyle: FontStyle.normal,fontSize: 20.0,color:Color(0xFF4354b3)),
+          textTheme: TextTheme(body1: TextStyle(fontStyle: FontStyle.normal,fontSize: 24.0,color: Colors.grey,),
+            body2: TextStyle(fontStyle: FontStyle.normal,fontSize: 20.0,color:Colors.cyan),
+            subhead: TextStyle(fontStyle: FontStyle.normal,fontSize: 14.0,color:Colors.grey),
+
           ),buttonTheme: ButtonThemeData(buttonColor:Color(0xFF4354b3))),
 
           // new
