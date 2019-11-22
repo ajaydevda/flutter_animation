@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
             body2: TextStyle(fontStyle: FontStyle.normal,fontSize: 20.0,color:Colors.cyan),
             subhead: TextStyle(fontStyle: FontStyle.normal,fontSize: 14.0,color:Colors.grey),
 
-          ),buttonTheme: ButtonThemeData(buttonColor:Color(0xFF4354b3))),
+          ),buttonTheme: ButtonThemeData(buttonColor:Color(0xFF4354b3),disabledColor: Color(0xFF0040ff))),
 
           // new
               home: splashScreen()//MyHomePage(title: 'Flutter Demo Home Page'),
@@ -288,23 +288,6 @@ class splashScreen1 extends State<splashScreen> with SingleTickerProviderStateMi
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 class Spinner extends StatefulWidget {
   @override
   _SpinnerState createState() => _SpinnerState();
@@ -424,3 +407,161 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+
+
+//
+//import 'package:flutter/material.dart';
+//import 'package:flutter/services.dart';
+//import 'package:quick_actions/quick_actions.dart';
+//import 'package:simple_permissions/simple_permissions.dart';
+//
+//void main() => runApp(new MyApp());
+//
+//class MyApp extends StatefulWidget {
+//  @override
+//  _MyAppState createState() => new _MyAppState();
+//}
+//
+//class _MyAppState extends State<MyApp> {
+//  String _platformVersion = 'Unknown';
+//  Permission permission;
+//  final  quickActions =  QuickActions();
+//
+//  @override
+//  initState() {
+//    super.initState();
+//
+//
+//    initPlatformState();
+//
+//    quickActions.setShortcutItems(<ShortcutItem>[
+//      const ShortcutItem(type: 'action_main', localizedTitle: 'Main view', icon: 'icon_main'),
+//      const ShortcutItem(type: 'action_help', localizedTitle: 'Help', icon: 'icon_help')
+//    ]);
+//
+//    quickActions.initialize((shortcutType) {
+//      if (shortcutType == 'action_main') {
+//        print('action_main');
+//      }
+//      else if(shortcutType=='action_help')
+//        {
+//          print('action_help');
+//
+//        }
+//      // More handling code...
+//    });
+//
+//  }
+//
+//
+//
+//  // Platform messages are asynchronous, so we initialize in an async method.
+//  initPlatformState() async {
+//    String platformVersion;
+//    // Platform messages may fail, so we use a try/catch PlatformException.
+//    try {
+//      platformVersion = await SimplePermissions.platformVersion;
+//    } on PlatformException {
+//      platformVersion = 'Failed to get platform version.';
+//    }
+//
+//    // If the widget was removed from the tree while the asynchronous platform
+//    // message was in flight, we want to discard the reply rather than calling
+//    // setState to update our non-existent appearance.
+//    if (!mounted) return;
+//
+//    setState(() {
+//      _platformVersion = platformVersion;
+//    });
+//  }
+//
+//  @override
+//  Widget build(BuildContext context) {
+//
+//
+//
+//
+//
+//    return new MaterialApp(
+//      home: new Scaffold(
+//        appBar: new AppBar(
+//          title: new Text('Plugin example app'),
+//        ),
+//        body: new Center(
+//          child: new Column(children: <Widget>[
+//            new Text('Running on: $_platformVersion\n'),
+//            new DropdownButton(
+//                items: _getDropDownItems(),
+//                value: permission,
+//                onChanged: onDropDownChanged),
+//            new RaisedButton(
+//                onPressed: checkPermission,
+//                child: new Text("Check permission")),
+//            new RaisedButton(
+//                onPressed: requestPermission,
+//                child: new Text("Request permission")),
+//            new RaisedButton(
+//                onPressed: getPermissionStatus,
+//                child: new Text("Get permission status")),
+//            new RaisedButton(
+//                onPressed: SimplePermissions.openSettings,
+//                child: new Text("Open settings"))
+//          ]),
+//        ),
+//      ),
+//    );
+//  }
+//
+//  onDropDownChanged(Permission permission) {
+//    setState(() => this.permission = permission);
+//    print(permission);
+//  }
+//
+//  requestPermission() async {
+//    final res = await SimplePermissions.requestPermission(permission);
+//    print("permission request result is " + res.toString());
+//  }
+//
+//  checkPermission() async {
+//    bool res = await SimplePermissions.checkPermission(permission);
+//    print("permission is " + res.toString());
+//  }
+//
+//  getPermissionStatus() async {
+//    final res = await SimplePermissions.getPermissionStatus(permission);
+//    print("permission status is " + res.toString());
+//  }
+//
+//
+//
+//
+//
+//  List<DropdownMenuItem<Permission>> _getDropDownItems() {
+//    List<DropdownMenuItem<Permission>> items = new List();
+//
+//    Permission.values.forEach((permission) {
+//      var item = new DropdownMenuItem(
+//          child: new Text(getPermissionString(permission)), value: permission);
+//
+//      items.add(item);
+//
+//    });
+//
+//
+//    return items;
+//  }
+//}
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+

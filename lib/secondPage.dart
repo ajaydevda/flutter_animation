@@ -3,6 +3,10 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
+import 'Database.dart';
+import 'customInputFormattter.dart';
 
 class secondPage extends StatefulWidget
 {
@@ -19,14 +23,17 @@ class secondPage extends StatefulWidget
 class _secondPage extends State<secondPage> with SingleTickerProviderStateMixin
 {
 
-
   AnimationController animationController;
-
   Animation animation,animation2;
+  TextEditingController mobileNumber=TextEditingController();
+  customInputFormatter c;
+  var db;
 
   @override
   void initState() {
     // TODO: implement initState
+    mobileNumber.text = '';
+     c=new customInputFormatter();
 
     animationController = AnimationController(duration: const Duration(seconds: 2), vsync: this);
 
@@ -40,6 +47,15 @@ class _secondPage extends State<secondPage> with SingleTickerProviderStateMixin
 
     animationController.forward();
     print('Second INIT');
+
+    db = DBProvider();
+
+
+    db.addhistory();
+
+    db.getHistory();
+
+
     super.initState();
   }
 
@@ -60,8 +76,7 @@ class _secondPage extends State<secondPage> with SingleTickerProviderStateMixin
               padding: const EdgeInsets.only(left: 10.0,right: 10.0,top: 25.0),
               child: SizedBox(height: 20.0,
               child:
-        Checkbox(value: true, onChanged: null,),
-
+              Checkbox(value: true, onChanged: null,),
         ),
             ),
             Padding(
@@ -91,6 +106,7 @@ class _secondPage extends State<secondPage> with SingleTickerProviderStateMixin
   }
 
 
+
   @override
   Widget build(BuildContext context) {
 
@@ -98,7 +114,7 @@ class _secondPage extends State<secondPage> with SingleTickerProviderStateMixin
 
     return Scaffold(
 
-
+        resizeToAvoidBottomPadding: false,
       body:
 
           SafeArea(child:
@@ -140,9 +156,17 @@ class _secondPage extends State<secondPage> with SingleTickerProviderStateMixin
                             new Container(
 
                             child: TextField(
+                              controller: mobileNumber,
                               decoration: new InputDecoration.collapsed(
-                                  enabled: true,hintText: ' 9999999999',hintStyle: Theme.of(context).textTheme.body1,
+                                  enabled: true,
+                                  hintText: ' 9999999999',hintStyle: Theme.of(context).textTheme.body1,
+
                               ),
+                              keyboardType: TextInputType.numberWithOptions(decimal: true,signed: false),
+                              inputFormatters:[c],
+                              style:Theme.of(context).textTheme.body1 ,
+
+
                             ),
                             ),flex: 5,
                             )
